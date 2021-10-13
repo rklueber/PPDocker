@@ -1,0 +1,19 @@
+version: "3"
+services:
+  portfolio:
+    build: .
+    container_name: portfolio
+    restart: unless-stopped
+    ports:
+      - 5801:5800
+    volumes:
+      - /mnt/portfolio:/opt/portfolio/workspace
+      - config:/config
+    environment:
+      KEEP_APP_RUNNING: 1
+      USER_ID: 0
+      GROUP_ID: 0
+      TZ: "Europe/Berlin" 
+
+volumes:
+  config:
